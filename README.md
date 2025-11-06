@@ -19,26 +19,8 @@
 
 > ⚠️ **This project should only be used in a secure and licensed environment and not in a real-world environment, on unlicensed systems, or on a public network.**
 
+
 ⛔Disclaimer: We are not responsible for any illegal use of this tool. ⛔
----
-
-## 📚 Table of Contents
-
-- Overview  
-- Features  
-- Architecture  
-- Installation  
-- Lab Usage (Simulation Mode)  
-- Example Configuration  
-- C2 Linking (Conceptual)  
-- API Reference  
-- Security & Ethics  
-- Troubleshooting  
-- Contributing  
-- License  
-- Acknowledgments  
-
----
 
 ## 🎯 Overview
 
