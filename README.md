@@ -1,4 +1,4 @@
-# RX-DDoS Ultimate v5.0 — README.md
+# RX-DDoS Ultimate v5.0
 
 <div align="center">
 
@@ -151,10 +151,6 @@ They allow researchers to visualize the coordination and communication flow with
 python rx_c2_simulation.py
 python register_bot_sim.py --bot-id BOT-001
 python attack_engine.py --target example.com --simulate
-```
-
-> 🧠 All actions above occur locally and generate safe, educational logs only.
-
 ---
 
 ## 🧰 Example Configuration (JSON)
