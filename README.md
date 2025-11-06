@@ -28,7 +28,7 @@
 It models distributed network behavior, **command & control (C2)** structure, and **traffic orchestration**, entirely within a **safe simulation environment**.  
 No real attack payloads are included or supported.
 
-> This README focuses on theoretical architecture, not offensive execution.
+> It is considered a tool RX-DDOS Among the offensive tools specific to the Red Team and the penetration testing teams 🏴‍☠️
 
 ---
 
