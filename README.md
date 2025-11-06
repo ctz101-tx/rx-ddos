@@ -17,11 +17,9 @@
 
 </div>
 
-> ⚠️ **Legal Disclaimer:**  
-> This project and its documentation are created **strictly for educational and defensive cybersecurity research**.  
-> No operational attack code or harmful functionality is included.  
-> All network actions are **simulated** for safe lab experimentation and theoretical study.
+> ⚠️ **This project should only be used in a secure and licensed environment and not in a real-world environment, on unlicensed systems, or on a public network.**
 
+⛔Disclaimer: We are not responsible for any illegal use of this tool. ⛔
 ---
 
 ## 📚 Table of Contents
