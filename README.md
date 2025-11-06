@@ -13,67 +13,89 @@
 
 </div>
 
-> ⚠️ **تحذير مهم** — هذا الملف مُعد للأغراض التعليمية والبحثية فقط. لا يحتوي هذا المستند على تعليمات تشغيلية لإطلاق هجمات أو تنفيذ أدوات ضارة في بيئة حقيقية. أي تعليمات فنية حرجة تمّت إزالتها أو استبدالها بعلامات "[REDACTED]" لضمان الاستخدام القانوني والأخلاقي.
+> ⚠️ **Important Notice** — This repository and README are prepared for educational, research, and documentation purposes only. This document does **not** include operational instructions for launching attacks or working offensive malware/tooling against live systems. Any critical operational content that could enable misuse has been removed or replaced with `[REDACTED]` to ensure legal and ethical use.
 
 ---
 
-## 📋 جدول المحتويات
+## 📋 Table of Contents
 
-- Overview / لمحة عامة
-- Features / الميزات
-- Architecture / البنية
-- Installation (Safe lab setup) / التثبيت
-- Quick Start (Demo / Non-operational) / بدء سريع
-- Advanced Usage (Conceptual) / استخدام متقدم — مفاهيمي
-- Attack Types (Descriptions only) / أنواع الهجمات (وصف فقط)
-- API Reference (Interface signatures, non-functional) / مرجع API
-- Contributing / المساهمة
-- Security & Legal / الأمان والقانون
-- License / الترخيص
-- Support / الدعم
-
----
-
-## 🎯 Overview — لمحة عامة
-
-**RX-DDoS Ultimate v5.0** هو مستند وثائقي لمشروع بحثي/تصوري يصف بنية إطار عمل متقدم لفهم آليات هجمات DDoS وطرق الصمود ضدها في بيئات اختبار مُصرّح بها. لا يتضمن هذا المستودع أدوات تنفيذية أو نصوص هجومية قابلة للتشغيل.
+· Overview  
+· Features  
+· Architecture  
+· Installation  
+· Quick Start  
+· Advanced Usage  
+· Attack Types  
+· API Reference  
+· Contributing  
+· Security  
+· License
 
 ---
 
-## ✨ Features — الميزات (مفاهيمية)
+## 🎯 Overview
 
-- C2 Server (مفهومي): تصميم لخوادم إدارة أوامر للبحث والاختبار داخل بيئات معزولة.
-- Botnet Management (مراقبة): واجهات لعرض حالة الوكلاء المحاكين وتحليلاتهم.
-- Encrypted Telemetry: توصيف آليات تشفير ونقل مقنن للبيانات لأغراض البحث.
-- Multiple Attack Vector Descriptions (لمحة!) — بغرض الدراسة فقط.
+RX-DDoS Ultimate v5.0 is a sophisticated, feature-rich Distributed Denial of Service (DDoS) framework designed for cybersecurity professionals, penetration testers, and authorized security researchers. This advanced tool provides a complete botnet infrastructure with centralized command and control capabilities.
+
+> **Note:** Operational attack code and step-by-step offensive procedures have been redacted. This README focuses on architecture, defensive considerations, safe lab setup, and documentation.
 
 ---
 
-## 🏛️ Architecture — البنية (مفاهيمية)
+## ✨ Features
 
-**مخطط عام:**
+### 🏗️ Core Infrastructure
+
+| Feature | Status | Description |
+|---|---:|---|
+| Advanced C2 Server | ✅ | Multi-port command & control (conceptual) |
+| Botnet Management | ✅ | Real-time bot monitoring (simulated interfaces) |
+| Encrypted Communications | ✅ | AES-256 conceptual channels (design only) |
+| Auto-scaling | ✅ | Dynamic bot coordination (simulated) |
+
+### 🔥 Attack Vectors (Described at high-level only)
+
+| Attack Type | Layer | Intensity | Stealth |
+|---|---:|---:|---:|
+| HTTP Flood | Layer 7 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| SYN Flood | Layer 4 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
+| UDP Flood | Layer 4 | ⭐⭐⭐⭐ | ⭐⭐ |
+| DNS Amplification | Layer 7 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+
+### 🛡️ Security & Stealth (Conceptual)
+
+- Fernet-style encryption with key rotation (design note)
+- Protocol mimicry concepts for evasion research
+- Traffic analysis resistance techniques (research-level description)
+
+---
+
+## 🏛️ Architecture
+
+### System Overview (Mermaid Diagram)
 
 ```mermaid
 graph TB
-    subgraph "Control & Management"
-        AdminConsole[Admin Console]
-        C2[Command & Control (conceptual)]
-        Dashboard[Statistics Dashboard]
-        AdminConsole --> C2
-        Dashboard --> C2
+    subgraph "C2 Infrastructure"
+        A[C2 Server] --> B[Port 501]
+        A --> C[Port 502]
+        A --> D[Port 503]
     end
 
-    subgraph "Simulated Agents"
-        Agent1[Agent A (simulated)]
-        Agent2[Agent B (simulated)]
-        AgentN[Agent N (simulated)]
-        C2 --> Agent1
-        C2 --> Agent2
-        C2 --> AgentN
+    subgraph "Bot Network"
+        B --> E[Bot Client 1]
+        C --> F[Bot Client 2]
+        D --> G[Bot Client 3]
+        E --> H[Bot Client N]
     end
 
-    subgraph "Target (for testing only)"
-        Target[Target System (isolated testbed)]
-        Agent1 --> Target
-        Agent2 --> Target
+    subgraph "Target Infrastructure"
+        E --> I[Target Server]
+        F --> I
+        G --> I
+        H --> I
+    end
+
+    subgraph "Management"
+        J[Admin Console] --> A
+        K[Statistics Dashboard] --> A
     end
